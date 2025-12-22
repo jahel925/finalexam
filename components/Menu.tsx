@@ -24,7 +24,7 @@ export default function Menu({ exam1Url, git1Url }: MenuProps) {
           <NavigationMenuList className="gap-2">
             <NavigationMenuItem>
               <a
-                href={exam1Url}
+                href={git1Url}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
