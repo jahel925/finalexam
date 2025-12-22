@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <>
       <Menu
-        exam1Url="https://example.com"
-        git1Url="https://github.com/jahel925"
+        exam1Url="https://exam1-axba.vercel.app/"
+        git1Url="https://github.com/jahel925/finalexam"
       />
 
       <main className="mx-auto max-w-5xl px-4 py-10">
