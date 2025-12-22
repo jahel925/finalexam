@@ -1,165 +1,274 @@
-import Menu from "../components/Menu";
-
-
-export default function Home() {
-  return (
-    <>
-      <Menu
-        exam1Url="https://exam1-axba.vercel.app/"
-        git1Url="https://github.com/jahel925/Exam1"
-      />
-
-      <main className="mx-auto max-w-5xl px-4 py-10">
-        <h1 className="text-3xl font-bold tracking-tight">Final Exam Project</h1>
-        <p className="mt-3 max-w-2xl text-muted-foreground">
-          Built with Next.js, Tailwind CSS, shadcn/ui, and lucide-react.
-        </p>
-      </main>
-    </>
-  );
-}
 import Menu from "@/components/Menu";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import Image from "next/image";
+
 import {
-  CalendarDays,
-  Sparkles,
+  CalendarCheck,
   MapPin,
-  Clock,
-  CreditCard,
-  ArrowRight,
+  Phone,
+  Mail,
+  Sparkles,
+  Scissors,
+  Instagram,
+  BadgeCheck,
 } from "lucide-react";
 
-export default function Home() {
-  return (
-    <>
-      <Menu
-        exam1Url="https://exam1-axba.vercel.app"
-        git1Url="https://github.com/jahel925/Exam1"
-      />
 
-      {/* Soft hero background */}
-      <div className="relative">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-background" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsla(330,85%,85%,0.55),transparent_55%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsla(340,90%,92%,0.55),transparent_60%)]" />
+export default function Home() {
+  // REQUIRED LINKS FOR GRADING
+  const EXAM1_URL = "https://exam1-axba.vercel.app/";
+  const GIT1_URL = "https://github.com/jahel925/exam1";
+
+  return (
+<main className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
+      <Menu exam1Url={EXAM1_URL} git1Url={GIT1_URL} />
+
+      {/* HERO */}
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          <div className="space-y-5">
+            <div className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 text-sm">
+              <Sparkles className="h-4 w-4 text-primary" />
+              <span>Gloss &amp; Grace • Nail Studio • Queens, NY</span>
+            </div>
+
+            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+              Gloss &amp; Grace
+            </h1>
+
+            <p className="text-muted-foreground md:text-lg">
+              Elevated nails, effortless confidence. A modern nail studio in the
+              heart of Queens delivering gel perfection, custom art, and spa-level
+              care.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+<Button className="gap-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90">
+                <CalendarCheck className="h-4 w-4" />
+                Book an Appointment
+              </Button>
+
+              <Button variant="secondary" className="gap-2" asChild>
+                <a href="#services">
+                  <Scissors className="h-4 w-4" />
+                  View Services
+                </a>
+              </Button>
+            </div>
+
+            <p className="text-sm text-muted-foreground">
+              Open Tue–Sun • Walk-ins welcome • Cash &amp; card accepted
+            </p>
+          </div>
+
+          {/* FEATURE CARD */}
+          <Card className="overflow-hidden">
+<div className="relative h-72 w-full md:h-80">
+  <Image
+    src="/images/image.jpg"
+    alt="Gloss & Grace studio"
+    fill
+    className="object-cover"
+    priority
+  />
+</div>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BadgeCheck className="h-5 w-5 text-primary" />
+                Studio Highlights
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-3 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span>Clean, modern, spa-level experience</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span>Long-lasting gel + custom nail art</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span>Designed as a Next.js remake of Exam 1</span>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="mx-auto max-w-6xl px-4 pb-12">
+        <div className="mb-6 space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight">Services</h2>
+          <p className="text-muted-foreground">
+            Signature treatments crafted for longevity and comfort. Prices are starting rates.
+          </p>
         </div>
 
-        <main className="mx-auto max-w-5xl px-4 pb-16 pt-10">
-          {/* Top mini brand line */}
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
-              G&amp;G
-            </span>
-            <div className="leading-tight">
-              <div className="font-medium text-foreground">Gloss &amp; Grace</div>
-              <div className="flex items-center gap-2">
-                <span>Nail Studio</span>
-                <span>•</span>
-                <span className="inline-flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  Queens, NY
-                </span>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Gel Manicure</CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-end justify-between gap-4">
+              <p className="text-sm text-muted-foreground">
+                Gentle prep, structured base, glossy finish. 2–3 weeks of wear.
+              </p>
+              <div className="text-right">
+                <p className="text-lg font-semibold">$45</p>
+                <p className="text-xs text-muted-foreground">45–60 min</p>
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
-          {/* Hero */}
-          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                Gloss &amp; Grace
-              </h1>
-
-              <p className="mt-3 text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Elevated nails, effortless confidence.
+          <Card>
+            <CardHeader>
+              <CardTitle>Acrylic Full Set</CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-end justify-between gap-4">
+              <p className="text-sm text-muted-foreground">
+                Custom shape &amp; length with balanced apex for strength and style.
               </p>
-
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/80">
-                A modern nail studio in the heart of Queens delivering gel
-                perfection, custom art, and spa-level care.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button className="rounded-full">
-                  <CalendarDays className="mr-2 h-4 w-4" />
-                  Book an Appointment
-                </Button>
-
-                <Button variant="secondary" className="rounded-full">
-                  View Services
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+              <div className="text-right">
+                <p className="text-lg font-semibold">$85</p>
+                <p className="text-xs text-muted-foreground">90–120 min</p>
               </div>
+            </CardContent>
+          </Card>
 
-              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-                <span className="inline-flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  Open Tue–Sun
-                </span>
-                <span>•</span>
-                <span className="inline-flex items-center gap-2">
-                  <Sparkles className="h-4 w-4" />
-                  Walk-ins welcome
-                </span>
-                <span>•</span>
-                <span className="inline-flex items-center gap-2">
-                  <CreditCard className="h-4 w-4" />
-                  Cash &amp; card accepted
-                </span>
+          <Card>
+            <CardHeader>
+              <CardTitle>Nail Art</CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-end justify-between gap-4">
+              <p className="text-sm text-muted-foreground">
+                French, chrome, cat-eye, hand-painted designs. Priced by level.
+              </p>
+              <div className="text-right">
+                <p className="text-lg font-semibold">+$10–$40</p>
+                <p className="text-xs text-muted-foreground">Add-on</p>
               </div>
-            </div>
+            </CardContent>
+          </Card>
 
-            {/* Hero image card */}
-            <div className="lg:justify-self-end">
-              <Card className="overflow-hidden rounded-3xl border bg-background/60 shadow-sm backdrop-blur">
-                <div className="relative aspect-[4/3] w-full min-w-[280px] max-w-[520px]">
-                  {/* Replace this with a real photo later */}
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,hsla(330,85%,92%,0.9),hsla(0,0%,100%,0.65))]" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,hsla(330,90%,80%,0.35),transparent_55%)]" />
-
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <div className="rounded-2xl bg-background/80 p-4 backdrop-blur">
-                      <div className="text-sm font-medium text-foreground">
-                        Modern studio vibe
-                      </div>
-                      <div className="mt-1 text-sm text-muted-foreground">
-                        Soft glam • clean lines • custom sets
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-
-          {/* Simple sections (so your nav items can exist later if you add them) */}
-          <section className="mt-16 grid gap-6 md:grid-cols-3">
-            <Card className="rounded-2xl p-5">
-              <div className="text-sm font-medium">About</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                A calm, detail-first nail studio focused on quality, hygiene, and
-                personalized design.
+          <Card>
+            <CardHeader>
+              <CardTitle>Spa Pedicure</CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-end justify-between gap-4">
+              <p className="text-sm text-muted-foreground">
+                Exfoliation, mask, massage, and precise polish application.
               </p>
-            </Card>
+              <div className="text-right">
+                <p className="text-lg font-semibold">$60</p>
+                <p className="text-xs text-muted-foreground">60 min</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+<section id="gallery" className="mx-auto max-w-6xl px-4 pb-12">
+  <div className="mb-6 space-y-2">
+    <h2 className="text-3xl font-bold tracking-tight">Portfolio</h2>
+    <p className="text-muted-foreground">
+      A few recent sets from our artists. Ask us to recreate or customize for you.
+    </p>
+  </div>
 
-            <Card className="rounded-2xl p-5">
-              <div className="text-sm font-medium">Services</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Gel manicures, structured sets, custom art, and simple classics.
-              </p>
-            </Card>
-
-            <Card className="rounded-2xl p-5">
-              <div className="text-sm font-medium">Gallery</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Showcase your best sets here with a clean grid and soft borders.
-              </p>
-            </Card>
-          </section>
-        </main>
+  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {[
+      {
+        src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop",
+        alt: "Milky chrome gel manicure",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1588015810531-dd522c9c8bbb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG5haWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600",
+        alt: "Minimal nude nails",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1688583417770-ff6cc18071dc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTB8fG5haWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600",
+        alt: "Pastel nail art",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1644203541701-c67c866fd42a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fG5haWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600",
+        alt: "Nail display",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1660241657459-554031137e4f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHJlZCUyMG5haWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600",
+        alt: "Bold red gel",
+      },
+      {
+        src: "https://images.unsplash.com/photo-1641814250010-9887d86eedfd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzJ8fG5haWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600",
+        alt: "Glitter accent nails",
+      },
+    ].map((img) => (
+      <div
+        key={img.src}
+        className="overflow-hidden rounded-2xl border bg-card shadow-sm"
+      >
+        <img
+          src={img.src}
+          alt={img.alt}
+          loading="lazy"
+          className="h-72 w-full object-cover"
+        />
       </div>
-    </>
+    ))}
+  </div>
+</section>
+
+      {/* INFO BAR */}
+      <section className="border-t bg-card">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 md:grid-cols-3">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold">Hours</p>
+            <p className="text-sm text-muted-foreground">
+              Tue–Fri 10–7 • Sat 10–6 • Sun 11–5 (Mon closed)
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-sm font-semibold">Contact</p>
+            <div className="space-y-1 text-sm text-muted-foreground">
+              <p className="flex items-center gap-2">
+                <Mail className="h-4 w-4" />
+                hello@glossandgraceny.com
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone className="h-4 w-4" />
+                (718) 555-1234
+              </p>
+              <p className="flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                Queens, NY
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-sm font-semibold">Social</p>
+            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
+                <Instagram className="h-4 w-4 text-primary" /> Instagram
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
+                <Sparkles className="h-4 w-4 text-primary" /> TikTok
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1">
+                <Sparkles className="h-4 w-4 text-primary" /> Pinterest
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} Gloss &amp; Grace • Queens, NY</p>
+          <p>Final Exam remake of Exam 1 using Next.js + Tailwind + shadcn/ui</p>
+        </div>
+      </footer>
+    </main>
   );
 }
