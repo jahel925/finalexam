@@ -12,7 +12,13 @@ import {
   Scissors,
   Instagram,
   BadgeCheck,
+  Star,
 } from "lucide-react";
+
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 
 export default function Home() {
@@ -25,7 +31,7 @@ export default function Home() {
       <Menu exam1Url={EXAM1_URL} git1Url={GIT1_URL} />
 
       {/* HERO */}
-      <section className="mx-auto max-w-6xl px-4 py-10">
+<section id="about" className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div className="space-y-5">
             <div className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-1 text-sm">
@@ -43,19 +49,36 @@ export default function Home() {
               care.
             </p>
 
-            <div className="flex flex-wrap gap-3">
-<Button className="gap-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90">
-                <CalendarCheck className="h-4 w-4" />
-                Book an Appointment
-              </Button>
+           <div className="flex flex-wrap gap-3">
+  <Button className="gap-2 bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90" asChild>
+    <a href="#contact">
+      <CalendarCheck className="h-4 w-4" />
+      Book an Appointment
+    </a>
+  </Button>
 
-              <Button variant="secondary" className="gap-2" asChild>
-                <a href="#services">
-                  <Scissors className="h-4 w-4" />
-                  View Services
-                </a>
-              </Button>
-            </div>
+  <Button variant="secondary" className="gap-2" asChild>
+    <a href="#services">
+      <Scissors className="h-4 w-4" />
+      View Services
+    </a>
+  </Button>
+
+  <Button variant="outline" className="gap-2" asChild>
+    <a href="#reviews">
+      <Star className="h-4 w-4" />
+      Reviews
+    </a>
+  </Button>
+
+  <Button variant="outline" className="gap-2" asChild>
+    <a href="#contact">
+      <MapPin className="h-4 w-4" />
+      Location
+    </a>
+  </Button>
+</div>
+
 
             <p className="text-sm text-muted-foreground">
               Open Tue–Sun • Walk-ins welcome • Cash &amp; card accepted
@@ -215,6 +238,142 @@ export default function Home() {
         />
       </div>
     ))}
+  </div>
+</section>
+
+<section id="reviews" className="mx-auto max-w-6xl px-4 pb-12">
+  <div className="mb-6 space-y-2">
+    <h2 className="text-3xl font-bold tracking-tight">Client Love</h2>
+    <p className="text-muted-foreground">
+      A few kind words from clients around Queens.
+    </p>
+  </div>
+
+  <div className="grid gap-4 md:grid-cols-3">
+    {[
+      {
+        quote:
+          "Best gel I’ve had—three weeks later and still flawless. The studio is spotless and so calm.",
+        name: "Maya R.",
+        place: "Sunnyside",
+      },
+      {
+        quote:
+          "They nailed my inspo pic (pun intended). Kind artists and beautiful designs.",
+        name: "Janelle P.",
+        place: "Astoria",
+      },
+      {
+        quote:
+          "Pedicure was spa-level—hot towels, massage, the works. I’m a fan.",
+        name: "Alicia G.",
+        place: "Long Island City",
+      },
+    ].map((r) => (
+      <Card key={r.name} className="h-full">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-base">
+            <Star className="h-4 w-4 text-primary" />
+            5.0 Stars
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm text-muted-foreground">
+          <p className="italic">“{r.quote}”</p>
+          <p className="font-medium text-foreground">
+            — {r.name}, {r.place}
+          </p>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+</section>
+
+
+<section id="contact" className="mx-auto max-w-6xl px-4 pb-14">
+  <div className="mb-6 space-y-2">
+    <h2 className="text-3xl font-bold tracking-tight">Contact &amp; Booking</h2>
+    <p className="text-muted-foreground">
+      Ready for glossy perfection? Send a request and we’ll confirm your appointment.
+    </p>
+  </div>
+
+  <div className="grid gap-6 lg:grid-cols-2">
+    <Card>
+      <CardHeader>
+        <CardTitle>Request an Appointment</CardTitle>
+      </CardHeader>
+
+      <CardContent className="space-y-4">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <Label htmlFor="name">Name</Label>
+            <Input id="name" placeholder="Your full name" />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" placeholder="you@example.com" />
+          </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <Label htmlFor="date">Preferred Date</Label>
+            <Input id="date" placeholder="mm/dd/yyyy" />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="phone">Phone</Label>
+            <Input id="phone" placeholder="(###) ###-####" />
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="service">Service</Label>
+          <Input id="service" placeholder="Gel manicure, acrylic, pedicure..." />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="notes">Notes</Label>
+          <Textarea id="notes" placeholder="Tell us your inspo or preferences" />
+        </div>
+
+        <Button className="w-full">Request Booking</Button>
+
+        <p className="text-xs text-muted-foreground">
+          Demo form only (does not submit). Connect to a booking tool to enable.
+        </p>
+      </CardContent>
+    </Card>
+
+    <Card className="overflow-hidden">
+      <div className="flex items-center gap-2 border-b px-6 py-4">
+        <MapPin className="h-4 w-4 text-primary" />
+        <p className="text-sm font-medium">Studio Location</p>
+      </div>
+
+      <div className="min-h-[320px] w-full bg-muted">
+  <iframe
+    title="Gloss & Grace Map"
+    className="h-[320px] w-full"
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps?q=45-12%20Queens%20Blvd%20Queens%20NY%2011104&output=embed"
+  />
+</div>
+
+
+      <CardContent className="space-y-1 py-5 text-sm text-muted-foreground">
+        <p className="font-medium text-foreground">Gloss &amp; Grace</p>
+        <p>45-12 Queens Blvd</p>
+        <p>Queens, NY 11104</p>
+        <p className="pt-2">hello@glossandgraceny.com</p>
+        <p>(718) 555-1234</p>
+        <p className="pt-2 text-xs">
+          Nearest trains: 7 • Q32, Q39, Q60 buses
+        </p>
+      </CardContent>
+    </Card>
   </div>
 </section>
 
